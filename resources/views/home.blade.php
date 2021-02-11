@@ -13,6 +13,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    @if(session()->has('messageD'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('messageD') }}
+                        </div>
+                    @endif
 
                      
                     <div class="form-group row">
