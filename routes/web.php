@@ -17,12 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/application/job/{id}', 'ApplicantController@index');
-Route::post('/application/create', 'ApplicantController@store')->name('application.create');
-Route::post('/view/{id}', 'ApplicantController@view');
-Route::post('/application/create', 'ApplicantController@store')->name('application.create');
-Route::post('/applicant/edit/{id}', 'ApplicantController@edit')->name('application.edit');
-Route::post('/application/update', 'ApplicantController@update')->name('application.update');
-Route::post('/application/delete/{id}', 'ApplicantController@delete')->name('application.delete');
+    Route::post('/application/job/{id}', 'ApplicantController@index');
+    Route::post('/application/create', 'ApplicantController@store')->name('application.create');
+    Route::post('/view/{id}', 'ApplicantController@view');
+    Route::post('/application/create', 'ApplicantController@store')->name('application.create');
+    Route::post('/applicant/edit/{id}', 'ApplicantController@edit')->name('application.edit');
+    Route::post('/application/update', 'ApplicantController@update')->name('application.update');
+    Route::post('/application/delete/{id}', 'ApplicantController@delete')->name('application.delete');
+
+});
