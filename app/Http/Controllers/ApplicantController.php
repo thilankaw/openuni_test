@@ -93,7 +93,7 @@ class ApplicantController extends Controller
             $workExpAdd->save();           
         }
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'Application Submited!');
 
     }
 
@@ -168,7 +168,7 @@ class ApplicantController extends Controller
             $workExpAdd->save();
             
         }  
-        return redirect()->route('home');
+        return redirect()->route('home')->with('message', 'Application Edited!');
 
     }
     public function delete($id)
@@ -176,6 +176,6 @@ class ApplicantController extends Controller
         $dltApplication = Applicant::where('id', $id)->delete();
         $dltEduQli = EducationalQualification::where('applicant_id', $id)->delete();
         $dltWorkExp = WorkExperience::where('applicant_id', $id)->delete();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('messageD', 'Application Deleted!');
     }
 }
